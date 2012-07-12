@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  surname: MyString
+  nid: MyString
+  birthday: 2012-07-12
+  phone: MyString
+  cell: MyString
+  email: MyString
+  country: MyString
+  diabetes: false
+  psoriasis: MyString
+  steroids: false
+  pregnancy: false
+  yellows: false
+  allergy: false
+  sensitive_skin: false
+  herpes: false
+  found: MyString
+  additional_info: MyText
+
+two:
+  name: MyString
+  surname: MyString
+  nid: MyString
+  birthday: 2012-07-12
+  phone: MyString
+  cell: MyString
+  email: MyString
+  country: MyString
+  diabetes: false
+  psoriasis: MyString
+  steroids: false
+  pregnancy: false
+  yellows: false
+  allergy: false
+  sensitive_skin: false
+  herpes: false
+  found: MyString
+  additional_info: MyText
