@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type: 
+  date: 2012-07-12
+  client_id: 1
+  price: 9.99
+  color: MyString
+  correction: false
+  additional_info: MyText
+
+two:
+  type: 
+  date: 2012-07-12
+  client_id: 1
+  price: 9.99
+  color: MyString
+  correction: false
+  additional_info: MyText
