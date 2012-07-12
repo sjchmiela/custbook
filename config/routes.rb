@@ -1,35 +1,10 @@
 Custbook::Application.routes.draw do
-  get "treatments/search"
-
-  get "treatments/page"
-
-  get "treatments/show"
-
-  get "treatments/new"
-
-  get "treatments/edit"
-
-  get "treatments/create"
-
-  get "treatments/update"
-
-  get "treatments/destroy"
-
-  get "clients/search"
-
-  get "clients/page"
-
-  get "clients/show"
-
-  get "clients/new"
-
-  get "clients/edit"
-
-  get "clients/create"
-
-  get "clients/update"
-
-  get "clients/destroy"
+  resources :treatments, :except => [:index]
+  resources :clients, :except => :index
+  match 'treatments/page/:id' => 'treatments#page', :as => :treatments_page, :via => :get
+  match 'treatments/search' => 'treatments#search', :as => :search_treatments, :via => :get
+  match 'clients/page/:id' => 'clients#page', :as => :clients_page, :via => :get
+  match 'clients/search' => 'clients#search', :as => :search_clients, :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
