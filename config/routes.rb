@@ -1,4 +1,20 @@
 Custbook::Application.routes.draw do
+  get "treatments/search"
+
+  get "treatments/page"
+
+  get "treatments/show"
+
+  get "treatments/new"
+
+  get "treatments/edit"
+
+  get "treatments/create"
+
+  get "treatments/update"
+
+  get "treatments/destroy"
+
   get "clients/search"
 
   get "clients/page"
