@@ -2,9 +2,9 @@ Custbook::Application.routes.draw do
   resources :treatments, :except => [:index]
   resources :clients, :except => :index
   match 'treatments/page/:id' => 'treatments#page', :as => :treatments_page, :via => :get
-  match 'treatments/search' => 'treatments#search', :as => :search_treatments, :via => :get
+  match 'treatments/search' => 'treatments#search', :as => :search_treatment, :via => :get
   match 'clients/page/:id' => 'clients#page', :as => :clients_page, :via => :get
-  match 'clients/search' => 'clients#search', :as => :search_clients, :via => :get
+  match 'clients/search' => 'clients#search', :as => :search_client, :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
