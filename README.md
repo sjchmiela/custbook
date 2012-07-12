@@ -14,16 +14,17 @@ Clients:
 5. `phone:string`
 6. `cell:string`
 7. `email:string`
-8. `diabetes:boolean`
-9. `psoriasis:boolean`
-10. `steroids:boolean`
-11. `pregnancy:boolean`
-12. `yellows:boolean`
-13. `allergy:boolean`
-14. `sensitive_skin:boolean`
-15. `herpes:boolean`
-16. `found:string`
-16. `additional_info:text`
+8. `country:string`
+9. `diabetes:boolean`
+10. `psoriasis:boolean`
+11. `steroids:boolean`
+12. `pregnancy:boolean`
+13. `yellows:boolean`
+14. `allergy:boolean`
+15. `sensitive_skin:boolean`
+16. `herpes:boolean`
+17. `found:string`
+18. `additional_info:text`
 
 Treatments:
 
