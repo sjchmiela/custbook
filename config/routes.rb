@@ -1,4 +1,20 @@
 Custbook::Application.routes.draw do
+  get "clients/search"
+
+  get "clients/page"
+
+  get "clients/show"
+
+  get "clients/new"
+
+  get "clients/edit"
+
+  get "clients/create"
+
+  get "clients/update"
+
+  get "clients/destroy"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
