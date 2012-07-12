@@ -1,4 +1,7 @@
 pl:
+  clients:
+    create:
+      success: "Klientka utworzona pomyślnie."
   date:
     abbr_day_names:
     - nie
