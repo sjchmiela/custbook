@@ -2,13 +2,31 @@
 <html>
 <head>
   <title>Custbook</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "application", "jquery.jqzoom", "http://jqueryui.com/themes/base/jquery.ui.all.css" %>
+  <%= javascript_include_tag "jquery-1.6.4.min.js", "jquery.liveFilter.js", "jquery.jqzoom-core-pack.js", "jquery.tablesorter.min.js", "rails.js", "jquery.ui.core.js", "jquery.ui.widget.js", "jquery.ui.position.js", "jquery.ui.autocomplete.js", "ttype_autocomplete" %>
+  <%= csrf_meta_tag %>
 </head>
 <body>
-
+<div class="topbar">
+	<div class="topbar-inner">
+		<div class="container">
+			<%= link_to "Custbook", "/", :class => :brand %>
+			<ul class="nav">
+				<li><%= link_to "Klientki", search_client_path, :class => :left %></li>
+				<li><%= link_to "+", new_client_path, :class => :right %></li>
+				<li><%= link_to "Zabiegi", search_treatment_path, :class => :left %></li>
+				<li><%= link_to "+", new_treatment_path, :class => :right %></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="content">
 <%= yield %>
-
+	</div>
+	<footer>
+		<p>Custbook, &copy; Stanisław Chmiela 2012</p>
+	</footer>
+</div>
 </body>
 </html>

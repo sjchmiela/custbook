@@ -1,0 +1,75 @@
+<%= form_for(@client, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @client.errors.any? %>
+    <div id="error_explanation" class="alert-message block-message error">
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+      <ul>
+      <% @client.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :surname, "Nazwisko", :class => "control-label" %><div class="controls">
+    <%= f.text_field :surname %> <span class="help-inline">Wymagane</span></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :name, "Imię", :class => "control-label" %><div class="controls">
+    <%= f.text_field :name %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :nid, "PESEL", :class => "control-label" %><div class="controls">
+    <%= f.text_field :nid %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :phone, "Telefon domowy", :class => "control-label" %><div class="controls">
+    <%= f.text_field :phone %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :cell, "Telefon komórkowy", :class => "control-label" %><div class="controls">
+    <%= f.text_field :cell %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :email, "Adres e-mail", :class => "control-label" %><div class="controls">
+    <%= f.email_field :email %></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Przeciwwskazania</label><div class="controls">
+    <label class="checkbox"><%= f.check_box :diabetes %> <span>Cukrzyca</span></label>
+    <label class="checkbox"><%= f.check_box :psoriasis %> <span>Łuszczyca</span></label>
+    <label class="checkbox"><%= f.check_box :steroids %> <span>Leki sterydowe</span></label>
+    <label class="checkbox"><%= f.check_box :pregnancy %> <span>Ciąża</span></label>
+    <label class="checkbox"><%= f.check_box :yellows %> <span>Żółtaczka</span></label>
+    <label class="checkbox"><%= f.check_box :allergy %> <span>Alergie</span></label>
+    <label class="checkbox"><%= f.check_box :sensitive_skin %> <span>Wrażliwa skóra</span></label>
+    <label class="checkbox"><%= f.check_box :herpes %> <span>Opryszczka</span></label>
+    </div>
+  </div>
+  <!--<div class="control-group" id="data_opryszczki">
+    <%#= f.label :data_opryszczki %><div class="controls">
+    <%#= f.date_select :data_opryszczki, :order => [:day, :month, :year] %></div>
+  </div>-->
+  <div class="control-group">
+    <%= f.label :found, "Jak się dowiedziała", :class => "control-label" %><div class="controls">
+    <%= f.text_field :found %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :additional_info, "Uwagi", :class => "control-label" %><div class="controls">
+    <%= f.text_area :additional_info, :size => "10x5" %></div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit "Zapisz klientkę", :class => [:btn, "btn-primary"] %>
+    <%= link_to "Anuluj", search_client_path, :class => [:btn] %></div>
+<% end %>
+<script>
+$("#client_opryszczka").click(function() {
+  if($("#client_opryszczka").is(":checked")) {
+    $("#data_opryszczki").css("display","block");
+  }
+  else
+  {
+    $("#data_opryszczki").css("display","none");
+  }
+});
+</script>

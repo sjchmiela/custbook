@@ -1,2 +1,74 @@
-<h1>Clients#show</h1>
-<p>Find me in app/views/clients/show.html.erb</p>
+<div class="page-header"><% if @client.photo != nil %>
+<%= image_tag @client.photo.file.url(:profile) %><h1 style="float:right; text-align: right; padding-top: 40px"><%= @client.surname%> <%= @client.name %></h1>
+<% else %>
+<h1><%= @client.surname%> <%= @client.name %></h1>
+<% end %></div>
+<% if notice != nil %>
+<div class="alert-message success" id="notice"><p><strong><%= notice %></strong></p></div>
+<% end %>
+<div class="row">
+<div class="span14" style="text-align: right;">
+<%= link_to 'Dodaj zdjęcie', {:controller => :photos, :action => :new, :client => @client.id}, :class=>[:btn, :info] %>
+<%= link_to 'Edytuj', edit_client_path(@client), :class => [:btn, :primary] %>
+<%= link_to 'Usuń', @client, :method => :delete, :confirm => "Jesteś pewna?", :class => [:btn, :error] %>
+</div>
+</div>
+<hr />
+<div class="row">
+<div class="span4">
+<p><strong>Urodziny:</strong> <%= @client.birthday %></p>
+<p><strong>PESEL:</strong> <%= @client.pesel %></p>
+<p><strong>Tel. domowy:</strong> <%= @client.phone %></p>
+<p><strong>Tel. komórkowy:</strong> <%= @client.cell %></p>
+<p><strong>Adres e-mail:</strong> <%= mail_to @client.email %></p>
+<p><strong>Dowiedziała się przez:</strong> <%= @client.finding %></p>
+</div>
+<div class="span4">
+<address><strong>Adres:</strong><br />
+<%= @client.street %><br />
+<%= @client.code %><% if @client.code != nil and @client.city != nil %>, <% end %><%= @client.city %>
+</address>
+<strong>Przeciwwskazania:</strong><br /><ul>
+<% if @client.cukrzyca %><li>Cukrzyca</li><% end %>
+<% if @client.luszczyca %><li>Łuszczyca</li><% end %>
+<% if @client.leki_sterydowe %><li>Leki sterydowe</li><% end %>
+<% if @client.ciaza %><li>Ciąża</li><% end %>
+<% if @client.zoltaczka %><li>Żółtaczka</li><% end %>
+<% if @client.alergie %><li>Alergie</li><% end %>
+<% if @client.wrazliwa_skora %><li>Wrażliwa skóra</li><% end %>
+<% if @client.opryszczka %><li>Opryszczka <% if @client.data_opryszczki != nil %>(<%= Date.today-@client.data_opryszczki %> dni temu)<% end %></li><% end %>
+</ul>
+</div>
+<div class="span6">
+<p><strong>Uwagi:</strong><br />
+<%= @client.notes %></p>
+</div>
+</div>
+<hr />
+<div class="row">
+<div class="span8">
+<h3 id="treatments">Zabiegi</h3>
+<% if @client.treatments.any? %>
+<% render 'treatments' %>
+<% end %>
+</div>
+<div class="span6">
+<h3>Dodaj zabieg</h3>
+<div class="validation-error"></div>
+<div id="treatments"></div>
+<%= render :partial => 'form_small.html.erb', :locals => {:treatment => Treatment.new({:client_id => @client.id})} %>
+</div>
+</div>
+<% if @client.photos.any? %>
+<hr />
+<div class="row">
+<div class="span14">
+<h3>Galeria klientki</h3>
+<ul class="media-grid">
+<% @client.photos.each do |p| %>
+<li><%= link_to image_tag( p.file.url(:profile)), p %></li>
+<% end %>
+</ul>
+</div>
+</div>
+<% end %>

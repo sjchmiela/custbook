@@ -1,0 +1,39 @@
+
+<%= form_for(treatment) do |f| %>
+  <% if treatment.errors.any? %>
+    <div id="error_explanation" class="alert-message error block-message">
+      <h2><%= pluralize(treatment.errors.count, "error") %> prohibited this treatment from being saved:</h2>
+
+      <ul>
+      <% treatment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= f.hidden_field :client_id %>
+  <div class="clearfix smaller">
+    <%= f.label :ttype, "Rodzaj zabiegu" %><div class="input">
+    <%= f.text_field :ttype , :id => "tags"  %></div>
+  </div>
+  <div class="clearfix smaller">
+    <%= f.label :price, "Cena" %><div class="input">
+    <%= f.text_field :price %></div>
+  </div>
+  <div class="clearfix smaller">
+    <%= f.label :color, "Kolor" %><div class="input">
+    <%= f.text_field :color %></div>
+  </div>
+  <div class="clearfix smaller">
+    <%= f.label :date, "Data" %><div class="input">
+    <%= f.date_select :date, :order => [:day, :month, :year] %></div>
+  </div>
+  <div class="clearfix smaller">
+    <%= f.label :correction, "Korekta" %><div class="input">
+    <%= f.check_box :correction %></div>
+  </div>
+  <div class="actions smaller">
+    <%= f.submit "Zapisz zabieg", :class => [:btn, :success] %>
+  </div>
+<% end %>
