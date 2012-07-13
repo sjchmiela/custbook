@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120712112818) do
+ActiveRecord::Schema.define(:version => 20120713142941) do
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20120712112818) do
     t.string   "email"
     t.string   "country"
     t.boolean  "diabetes"
-    t.string   "psoriasis"
+    t.boolean  "psoriasis",       :limit => 255
     t.boolean  "steroids"
     t.boolean  "pregnancy"
     t.boolean  "yellows"
@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(:version => 20120712112818) do
     t.boolean  "herpes"
     t.string   "found"
     t.text     "additional_info"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "treatments", :force => true do |t|
-    t.string   "type"
+    t.string   "ttype"
     t.date     "date"
     t.integer  "client_id"
     t.decimal  "price"

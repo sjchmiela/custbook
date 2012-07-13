@@ -1,0 +1,14 @@
+<% if @client.treatments.any? %>
+	<% sum = 0 %>
+	<ul>
+		<% @client.treatments.each do |t| %>
+		<% sum += t.price.to_i %>
+			<li><%= link_to t.date.to_s, t%>:
+			<%= t.ttype.to_s+", "+t.color.to_s%><% if t.correction %> <span class="label label-warning"><%= t "treatment.correction" %></span><% else %><%= ", "+t.price.to_s+" zł" %><% end %></li>
+		<% end %>
+	</ul>
+	<p><strong><%= t "treatment.count" %>:</strong> <%= @client.treatments.count %></p>
+	<p><strong><%= t "treatment.all_price" %>:</strong>	<%= sum %> zł</p>
+<% else %>
+	<%= t "treatment.no" %>
+<% end %>

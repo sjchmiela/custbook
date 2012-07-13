@@ -1,2 +1,73 @@
-<h1>Treatments#page</h1>
-<p>Find me in app/views/treatments/page.html.erb</p>
+<div class="page-header"><h1>Lista zabiegów</h1></div>
+<div class="row">
+<div class="span14">
+<%= treatment_create_button %>
+<%= link_to 'Wyszukiwanie', search_treatment_path, :class => [:btn, "btn-info"]%>
+</div>
+</div>
+<br />
+<script>
+  $(function() {
+$("table#sort").tablesorter({headers:{5:{sorter:false}}});
+});
+</script>
+<table class="table table-bordered zebra-striped" id="sort">
+<thead>
+  <tr>
+    <th class="header headerSortDown">#</th>
+    <th class="green">Klientka</th>
+    <th class="blue">Rodzaj</th>
+    <th class="red">Kolor</th>
+    <th class="orange">Data</th>
+    <th>Akcje</th>
+  </tr>
+</thead>
+<tbody>
+<% if @treatments.any? %>
+<% @treatments.each do |treatment| %>
+  <tr>
+    <td><%= treatment.id %></td>
+    <% if treatment.client != nil %>
+    <td><%= link_to treatment.client.full_name, treatment.client %></td>
+    <% else %>
+    <td>Nieznany klient</td>
+    <% end %>
+    <% if treatment.ttype != nil %>
+    <td><%= treatment.ttype %><% if treatment.correction %> <span class="label label-warning">KOREKTA</span><% end %></td>
+    <% else %>
+    <td>Nieznany rodzaj zabiegu</td>
+    <% end %>
+    <% if treatment.color != nil %>
+    <td><%= treatment.color %></td>
+    <% else %>
+    <td>Nieznany kolor</td>
+    <% end %>
+    <td><%= treatment.date %></td>
+    <td><div class="btn-group"><%= treatment_show_button treatment %>
+    <%= treatment_edit_button treatment %>
+    <%= treatment_destroy_button treatment %></div></td>
+  </tr>
+<% end %>
+<% else %>
+<tr><td colspan="6">Brak obiektów do wyświetlenia</td></tr>
+<% end %>
+</tbody>
+</table>
+<div class="row">
+    <div class="span3"> 
+        <% if @page > 1 %>
+        <%= link_to 'Poprzednia strona', {:controller => :treatments, :action => :page, :id => @page-1}, :class=>[:btn,:primary] %>
+        <% end %>
+    </div>
+    <div class="span8" style="text-align: center">
+        <% for i in 1..(Treatment.count/10) do %>
+        <%= link_to i, {:controller => :treatments, :action => :id, :page => i} %>
+        <% end %>
+    </div>
+    <div class="span3 pull-right">
+        <% if Treatment.count > (@page)*10 %>        
+            <%= link_to 'Następna strona', {:controller => :treatments, :action => :page, :id => @page+1}, :class=>[:btn,:primary] %>
+        <% end %>
+    </div>
+
+</div>

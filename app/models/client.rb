@@ -2,6 +2,7 @@ class Client < ActiveRecord::Base
   attr_accessible :additional_info, :allergy, :birthday, :cell, :country, :diabetes, :email, :found, :herpes, :name, :nid, :phone, :pregnancy, :psoriasis, :sensitive_skin, :steroids, :surname, :yellows
   validates :surname, :presence => true
   before_save :update_birthday
+  has_many :treatments
 
   def full_name
     return "#{self.name} #{self.surname}"
@@ -12,5 +13,12 @@ class Client < ActiveRecord::Base
       self.birthday = Date.strptime(self.nid[0..5],"%y%m%d")
     end
   end
-      
+  
+  def any_contraindications?
+    if self.allergy or self.diabetes or self.herpes or self.pregnancy or self.psoriasis or self.sensitive_skin or self.steroids or self.yellows
+      return true
+    else
+      return false
+    end
+  end
 end

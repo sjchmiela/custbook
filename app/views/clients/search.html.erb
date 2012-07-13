@@ -1,8 +1,8 @@
 <div class="page-header"><h1>Lista klientek</h1></div>
 <div class="row">
-<div class="span10">
-<%= link_to 'Stwórz nową klientkę', new_client_path, :class => [:btn, :success] %>
-<%= link_to 'Stronicowe przeglądanie', clients_path, :class => [:btn, :info] %>
+<div class="span5">
+<%= client_create_button %>
+<%= link_to 'Stronicowe przeglądanie', clients_path, :class => [:btn, "btn-info"] %>
 </div>
 <div class="span4 pull-right">
 <input type="text" class="filter" name="livefilter" />
@@ -11,20 +11,19 @@
 <br />
 <script>
 $(function() {
-    $("table#sort").tablesorter({headers:{1:{sorter:false},6:{sorter:false}}});
+    $("table#sort").tablesorter({headers:{5:{sorter:false}}});
     $('table.live_filter').liveFilter('fade');
 });
 </script>
-<table class="zebra-striped live_filter" id="sort">
+<table class="table table-bordered zebra-striped live_filter" id="sort">
 <thead>
   <tr>
     <th class="header headerSortDown">#</th>
-    <th class="yellow">Zdjęcie</th>
     <th class="green">Nazwisko</th>
     <th class="blue">Imię</th>
     <th class="red">Tel. kom.</th>
     <th class="orange">Email</th>
-    <th></th>
+    <th class="header">Akcje</th>
   </tr>
 </thead>
 <tbody>
@@ -32,18 +31,17 @@ $(function() {
 <% @clients.each do |client| %>
   <tr>
     <td><%= client.id %></td>
-    <td><% if client.photo != nil %><%= image_tag client.photo.file.url(:small_bootstrap) %><% end %></td>
     <td><%= client.surname %></td>
     <td><%= client.name %></td>
     <td><%= client.cell %></td>
     <td><%= mail_to client.email %></td>
-    <td><%= link_to 'Pokaż', client %>
-    <%= link_to 'Edytuj', edit_client_path(client) %>
-    <%= link_to 'Usuń', client, :confirm => 'Jesteś pewna?', :method => :delete %></td>
+    <td><div class="btn-group"><%= client_show_button client %>
+    <%= client_edit_button client %>
+    <%= client_destroy_button client %></div></td>
   </tr>
 <% end %>
 <% else %>
-<tr><td colspan="5">Brak obiektów do wyświetlenia.</td></tr>
+<tr><td colspan="6">Brak obiektów do wyświetlenia.</td></tr>
 <% end %>
 </tbody>
 </table>

@@ -1,74 +1,46 @@
-<div class="page-header"><% if @client.photo != nil %>
-<%= image_tag @client.photo.file.url(:profile) %><h1 style="float:right; text-align: right; padding-top: 40px"><%= @client.surname%> <%= @client.name %></h1>
-<% else %>
-<h1><%= @client.surname%> <%= @client.name %></h1>
-<% end %></div>
+<div class="page-header">
+<h1><%= @client.full_name %></h1>
+</div>
 <% if notice != nil %>
-<div class="alert-message success" id="notice"><p><strong><%= notice %></strong></p></div>
+<div class="alert-message alert alert-success" id="notice"><strong><%= notice %></strong></div>
 <% end %>
 <div class="row">
-<div class="span14" style="text-align: right;">
-<%= link_to 'Dodaj zdjęcie', {:controller => :photos, :action => :new, :client => @client.id}, :class=>[:btn, :info] %>
-<%= link_to 'Edytuj', edit_client_path(@client), :class => [:btn, :primary] %>
-<%= link_to 'Usuń', @client, :method => :delete, :confirm => "Jesteś pewna?", :class => [:btn, :error] %>
+<div class="btn-group pull-right">
+<%= client_edit_button @client %>
+<%= client_destroy_button @client %>
 </div>
 </div>
 <hr />
 <div class="row">
 <div class="span4">
-<p><strong>Urodziny:</strong> <%= @client.birthday %></p>
-<p><strong>PESEL:</strong> <%= @client.pesel %></p>
-<p><strong>Tel. domowy:</strong> <%= @client.phone %></p>
-<p><strong>Tel. komórkowy:</strong> <%= @client.cell %></p>
-<p><strong>Adres e-mail:</strong> <%= mail_to @client.email %></p>
-<p><strong>Dowiedziała się przez:</strong> <%= @client.finding %></p>
-</div>
-<div class="span4">
-<address><strong>Adres:</strong><br />
-<%= @client.street %><br />
-<%= @client.code %><% if @client.code != nil and @client.city != nil %>, <% end %><%= @client.city %>
-</address>
-<strong>Przeciwwskazania:</strong><br /><ul>
-<% if @client.cukrzyca %><li>Cukrzyca</li><% end %>
-<% if @client.luszczyca %><li>Łuszczyca</li><% end %>
-<% if @client.leki_sterydowe %><li>Leki sterydowe</li><% end %>
-<% if @client.ciaza %><li>Ciąża</li><% end %>
-<% if @client.zoltaczka %><li>Żółtaczka</li><% end %>
-<% if @client.alergie %><li>Alergie</li><% end %>
-<% if @client.wrazliwa_skora %><li>Wrażliwa skóra</li><% end %>
-<% if @client.opryszczka %><li>Opryszczka <% if @client.data_opryszczki != nil %>(<%= Date.today-@client.data_opryszczki %> dni temu)<% end %></li><% end %>
+<p><strong>Urodziny:</strong> <%= @client.birthday.nil? ? nodatatext : @client.birthday %></p>
+<p><strong>PESEL:</strong> <%= nodata @client.nid %></p>
+<p><strong>Tel. domowy:</strong> <%= nodata @client.phone %></p>
+<p><strong>Tel. komórkowy:</strong> <%= nodata @client.cell %></p>
+<p><strong>Adres e-mail:</strong> <%= @client.email.empty? ? nodatatext : (mail_to @client.email) %></p>
+<p><strong>Dowiedziała się przez:</strong> <%= nodata @client.found %></p>
+<strong>Przeciwwskazania:</strong><br /><% if @client.any_contraindications? %><ul>
+<% if @client.diabetes %><li>Cukrzyca</li><% end %>
+<% if @client.psoriasis %><li>Łuszczyca</li><% end %>
+<% if @client.steroids %><li>Leki sterydowe</li><% end %>
+<% if @client.pregnancy %><li>Ciąża</li><% end %>
+<% if @client.yellows %><li>Żółtaczka</li><% end %>
+<% if @client.allergy %><li>Alergie</li><% end %>
+<% if @client.sensitive_skin %><li>Wrażliwa skóra</li><% end %>
+<% if @client.herpes %><li>Opryszczka</li><% end %>
 </ul>
-</div>
-<div class="span6">
+<% else %>
+<span class="no-data"><%= t "client.details.absence" %></span><% end %>
 <p><strong>Uwagi:</strong><br />
-<%= @client.notes %></p>
-</div>
-</div>
-<hr />
-<div class="row">
-<div class="span8">
-<h3 id="treatments">Zabiegi</h3>
-<% if @client.treatments.any? %>
-<% render 'treatments' %>
-<% end %>
+<% if @client.additional_info.empty? %><span class="no-data"><%= t "client.details.absence" %></span><% end %><%= @client.additional_info %></p>
 </div>
 <div class="span6">
-<h3>Dodaj zabieg</h3>
-<div class="validation-error"></div>
-<div id="treatments"></div>
-<%= render :partial => 'form_small.html.erb', :locals => {:treatment => Treatment.new({:client_id => @client.id})} %>
-</div>
-</div>
-<% if @client.photos.any? %>
+<h2 id="treatments">Zabiegi</h2>
+<%= render 'clients_treatments' %>
 <hr />
-<div class="row">
-<div class="span14">
-<h3>Galeria klientki</h3>
-<ul class="media-grid">
-<% @client.photos.each do |p| %>
-<li><%= link_to image_tag( p.file.url(:profile)), p %></li>
-<% end %>
-</ul>
+<div class="well">
+	<h2>Dodaj zabieg</h2>
+<%= render :partial => 'treatments/form_small.html.erb', :locals => {:treatment => Treatment.new({:client_id => @client.id})} %>
 </div>
 </div>
-<% end %>
+</div>

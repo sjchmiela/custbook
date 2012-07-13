@@ -1,0 +1,46 @@
+<%= form_for(@treatment, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @treatment.errors.any? %>
+    <div id="error_explanation" class="alert-message error block-message">
+      <h2><%= pluralize(@treatment.errors.count, "error") %> prohibited this treatment from being saved:</h2>
+
+      <ul>
+      <% @treatment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :client_id, "Klientka", :class => "control-label" %><div class="controls">
+   <%= f.select :client_id, Client.order(:surname).all.collect {|p| [(p.surname+" "+p.name), p.id]}, :include_blank => true %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :ttype, "Rodzaj zabiegu", :class => "control-label" %><div class="controls">
+    <%= f.text_field :ttype %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :price, "Cena", :class => "control-label" %><div class="controls"><div class="input-append">
+    <%= f.text_field :price %><span class="add-on">zł</span></div></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :color, "Kolor", :class => "control-label" %><div class="controls">
+    <%= f.text_field :color %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :date, "Data", :class => "control-label" %><div class="controls">
+    <%= f.date_select :date, :order => [:day, :month, :year] %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :correction, "Korekta", :class => "control-label" %><div class="controls">
+    <%= f.check_box :correction %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :additional_info, "Uwagi", :class => "control-label" %><div class="controls"><%= f.text_area :additional_info %></div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit "Zapisz zabieg", :class => [:btn, "btn-primary"] %>
+    <%= link_to "Anuluj", treatments_path, :class => [:btn] %>
+  </div>
+<% end %>

@@ -1,0 +1,34 @@
+<%= form_for(treatment, :html => {:class => "form-vertical"}) do |f| %>
+  <%= f.hidden_field :client_id %>
+  <div class="control-group">
+    <%= f.label :ttype, "Rodzaj zabiegu", :class => "control-label" %><div class="controls">
+    <%= f.text_field :ttype %>
+      <select name="ttype_from_selection">
+      <%= options_from_collection_for_select(Treatment.select("DISTINCT(ttype)").order(:ttype),"ttype","ttype") %>
+    </select>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :price, "Cena", :class => "control-label" %><div class="controls"><div class="input-append">
+    <%= f.text_field :price %><span class="add-on">zł</span></div></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :color, "Kolor", :class => "control-label" %><div class="controls">
+    <%= f.text_field :color %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :date, "Data", :class => "control-label" %><div class="controls">
+    <%= f.date_select :date, :order => [:day, :month, :year] %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :correction, "Korekta", :class => "control-label" %><div class="controls">
+    <%= f.check_box :correction %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :additional_info, "Uwagi", :class => "control-label" %><div class="controls"><%= f.text_area :additional_info %></div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit "Zapisz zabieg", :class => [:btn, "btn-primary"] %>
+    <%= link_to "Anuluj", treatments_path, :class => [:btn] %>
+  </div>
+<% end %>

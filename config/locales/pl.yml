@@ -1,7 +1,37 @@
 pl:
-  clients:
+  details:
+      nodata: "Brak danych."
+      absence: "Brak"
+  client:
+    show:
+      button: "<i class='icon-user'></i> Pokaż"
+    edit:
+      button: "<i class='icon-pencil'></i> Edytuj"
+    delete:
+      button: "<i class='icon-trash'></i> Usuń"
+      confirm: "Jesteś pewna, że chcesz usunąć klientkę?"
     create:
+      button: "<i class='icon-plus'></i> Stwórz nową klientkę"
       success: "Klientka utworzona pomyślnie."
+    update:
+      success: "Dane klientki zedytowane pomyślnie."
+  treatment:
+    correction: "KOREKTA"
+    count: "Razem zabiegów"
+    all_price: "Razem złotych"
+    no: "Brak zabiegów."
+    show:
+      button: "<i class='icon-list-alt'></i> Pokaż"
+    edit:
+      button: "<i class='icon-pencil'></i> Edytuj"
+    delete:
+      button: "<i class='icon-trash'></i> Usuń"
+      confirm: "Jesteś pewna, że chcesz usunąć ten zabieg?"
+    create:
+      button: "<i class='icon-plus'></i> Stwórz nowy zabieg"
+      success: "Zabieg utworzony pomyślnie."
+    update:
+      success: "Dane zabiegu zedytowane pomyślnie."
   date:
     abbr_day_names:
     - nie
