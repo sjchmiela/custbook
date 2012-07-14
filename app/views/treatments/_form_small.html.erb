@@ -1,20 +1,27 @@
-<%= form_for(treatment, :html => {:class => "form-vertical"}) do |f| %>
+<%= form_for(treatment, :html => {:class => "form-vertical small-treatment-form"}) do |f| %>
   <%= f.hidden_field :client_id %>
   <div class="control-group">
     <%= f.label :ttype, "Rodzaj zabiegu", :class => "control-label" %><div class="controls">
-    <%= f.text_field :ttype %>
-      <select name="ttype_from_selection">
-      <%= options_from_collection_for_select(Treatment.select("DISTINCT(ttype)").order(:ttype),"ttype","ttype") %>
+      <select name="ttype_from_selection" id="ttype_from_selection">
+        <option value=""></option>
+        <option value="new">Dodaj nowy</option>
+      <%= options_from_collection_for_select(Treatment.where("ttype != ''").select("DISTINCT(ttype)").order(:ttype),"ttype","ttype") %>
     </select>
+    <%= f.text_field :ttype, :id => "new_ttype" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :price, "Cena", :class => "control-label" %><div class="controls"><div class="input-append">
-    <%= f.text_field :price %><span class="add-on">zł</span></div></div>
+    <%= f.number_field :price %><span class="add-on">zł</span></div></div>
   </div>
   <div class="control-group">
     <%= f.label :color, "Kolor", :class => "control-label" %><div class="controls">
-    <%= f.text_field :color %></div>
+    <select name="color_from_selection" id="color_from_selection">
+        <option value=""></option>
+        <option value="new">Dodaj nowy</option>
+      <%= options_from_collection_for_select(Treatment.where("color != ''").select("DISTINCT(color)").order(:color),"color","color") %>
+    </select>
+    <%= f.text_field :color, :id => "new_color" %></div>
   </div>
   <div class="control-group">
     <%= f.label :date, "Data", :class => "control-label" %><div class="controls">
@@ -32,3 +39,7 @@
     <%= link_to "Anuluj", treatments_path, :class => [:btn] %>
   </div>
 <% end %>
+<script>
+  $(function(){$("#new_ttype").hide();$("#ttype_from_selection").live("click", function(){if($("#ttype_from_selection option:selected").text() == "Dodaj nowy") {$("#new_ttype").show();} else { $("#new_ttype").hide();}})})
+  $(function(){$("#new_color").hide();$("#color_from_selection").live("click", function(){if($("#color_from_selection option:selected").text() == "Dodaj nowy") {$("#new_color").show();} else { $("#new_color").hide();}})})
+</script>

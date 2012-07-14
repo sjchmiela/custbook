@@ -27,7 +27,7 @@
 <% if @client.yellows %><li>Żółtaczka</li><% end %>
 <% if @client.allergy %><li>Alergie</li><% end %>
 <% if @client.sensitive_skin %><li>Wrażliwa skóra</li><% end %>
-<% if @client.herpes %><li>Opryszczka</li><% end %>
+<% if @client.herpes %><li>Opryszczka<% if @client.herpes_info %> (<%= @client.herpes_info%>)<% end %></li><% end %>
 </ul>
 <% else %>
 <span class="no-data"><%= t "client.details.absence" %></span><% end %>

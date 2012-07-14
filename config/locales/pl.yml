@@ -1,7 +1,7 @@
 pl:
   details:
       nodata: "Brak danych."
-      absence: "Brak"
+      absence: "Brak danych"
   client:
     show:
       button: "<i class='icon-user'></i> Pokaż"
@@ -19,7 +19,7 @@ pl:
     correction: "KOREKTA"
     count: "Razem zabiegów"
     all_price: "Razem złotych"
-    no: "Brak zabiegów."
+    no_treatments: "Brak zabiegów."
     show:
       button: "<i class='icon-list-alt'></i> Pokaż"
     edit:

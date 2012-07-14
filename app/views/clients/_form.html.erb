@@ -46,10 +46,10 @@
     <label class="checkbox"><%= f.check_box :herpes %> <span>Opryszczka</span></label>
     </div>
   </div>
-  <!--<div class="control-group" id="data_opryszczki">
-    <%#= f.label :data_opryszczki %><div class="controls">
-    <%#= f.date_select :data_opryszczki, :order => [:day, :month, :year] %></div>
-  </div>-->
+  <div class="control-group" id="herpes_info_container">
+    <%= f.label :herpes_info, "Informacje o opryszczce", :class => "control-label" %><div class="controls">
+    <%= f.text_field :herpes_info %></div>
+  </div>
   <div class="control-group">
     <%= f.label :found, "Jak się dowiedziała", :class => "control-label" %><div class="controls">
     <%= f.text_field :found %></div>
@@ -62,3 +62,7 @@
     <%= f.submit "Zapisz klientkę", :class => [:btn, "btn-primary"] %>
     <%= link_to "Anuluj", search_client_path, :class => [:btn] %></div>
 <% end %>
+
+<script>
+  $(function() {$("#herpes_info_container").hide(); $("#client_herpes").live("click", function() {$("#herpes_info_container").toggle('fast');});});
+</script>

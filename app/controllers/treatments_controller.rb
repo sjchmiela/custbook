@@ -22,9 +22,8 @@ class TreatmentsController < ApplicationController
   end
 
   def create
-    if params[:treatment][:ttype].empty?
-      params[:treatment][:ttype] = params[:ttype_from_selection]
-    end
+    update_ttype(params)
+    update_color(params)
     @treatment = Treatment.new(params[:treatment])
     if @treatment.save
       redirect_to(@treatment, :notice => t("treatment.create.success"))
@@ -34,6 +33,8 @@ class TreatmentsController < ApplicationController
   end
 
   def update
+    update_ttype(params)
+    update_color(params)
     @treatment = Treatment.find(params[:id])
     if @treatment.update_attributes(params[:treatment])
       redirect_to @treatment, :notice => t("treatment.update.success")
@@ -46,5 +47,18 @@ class TreatmentsController < ApplicationController
     @treatment = Treatment.find(params[:id])
     @treatment.destroy
     redirect_to (search_treatment_url)
+  end
+
+  private
+
+  def update_ttype (params)
+    if params[:ttype_from_selection] != "new"
+      params[:treatment][:ttype] = params[:ttype_from_selection]
+    end
+  end
+  def update_color (params)
+    if params[:color_from_selection] != "new"
+      params[:treatment][:color] = params[:color_from_selection]
+    end
   end
 end

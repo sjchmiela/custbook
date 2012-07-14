@@ -11,4 +11,7 @@ module TreatmentsHelper
 	def treatment_destroy_button (treatment)
 		return link_to (raw t "treatment.delete.button"), treatment, :confirm => (raw t "treatment.delete.confirm"), :class => [:btn, "btn-danger"], :method => :delete
 	end
+	def treatment_info_in_client (t)
+		return ((t.ttype.empty?) ? "<span style='color: grey'>Nieznany rodzaj</span>" : t.ttype)+" &mdash; "+((t.color.empty?) ? "<span style='color: grey'>Nieznany kolor</span>" : t.color)+((t.correction) ? " <span class='label label-warning'>#{t 'treatment.correction'}</span>" : "")
+	end
 end
