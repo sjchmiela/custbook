@@ -22,7 +22,7 @@
         <option value="new">Dodaj nowy</option>
       <%= options_from_collection_for_select(Treatment.where("ttype != ''").select("DISTINCT(ttype)").order(:ttype),"ttype","ttype") %>
     </select>
-    <%= f.text_field :ttype, :id => "new_ttype" %>
+    <%= f.text_field :ttype, :id => "new_ttype", :placeholder => "Nazwa nowego rodzaju" %>
     </div>
   </div>
   <div class="control-group">
@@ -36,7 +36,7 @@
         <option value="new">Dodaj nowy</option>
       <%= options_from_collection_for_select(Treatment.where("color != ''").select("DISTINCT(color)").order(:color),"color","color") %>
     </select>
-    <%= f.text_field :color, :id => "new_color" %></div>
+    <%= f.text_field :color, :id => "new_color", :placeholder => "Nazwa nowego koloru" %></div>
   </div>
   <div class="control-group">
     <%= f.label :date, "Data", :class => "control-label" %><div class="controls">
@@ -55,6 +55,6 @@
   </div>
 <% end %>
 <script>
-  $(function(){$("#new_ttype").hide();<% if @treatment.ttype %>$("#ttype_from_selection option").each(function(el) {if($(this).text() == "<%= @treatment.ttype %>") { $(this).attr("selected", "selected");}});<% end %>$("#ttype_from_selection").live("click", function(){if($("#ttype_from_selection option:selected").text() == "Dodaj nowy") {$("#new_ttype").show();} else { $("#new_ttype").hide();}})})
-  $(function(){$("#new_color").hide();<% if @treatment.color %>$("#color_from_selection option").each(function(el) {if($(this).text() == "<%= @treatment.color %>") { $(this).attr("selected", "selected");}});<% end %>$("#color_from_selection").live("click", function(){if($("#color_from_selection option:selected").text() == "Dodaj nowy") {$("#new_color").show();} else { $("#new_color").hide();}})})
+  $(function(){$("#new_ttype").hide();<% if @treatment.ttype %>$("#ttype_from_selection option").each(function(el) {if($(this).text() == "<%= @treatment.ttype %>") { $(this).attr("selected", "selected");}});<% end %>$("#ttype_from_selection").live("change", function(){if($("#ttype_from_selection option:selected").text() == "Dodaj nowy") {$("#new_ttype").show();} else { $("#new_ttype").hide();}})})
+  $(function(){$("#new_color").hide();<% if @treatment.color %>$("#color_from_selection option").each(function(el) {if($(this).text() == "<%= @treatment.color %>") { $(this).attr("selected", "selected");}});<% end %>$("#color_from_selection").live("change", function(){if($("#color_from_selection option:selected").text() == "Dodaj nowy") {$("#new_color").show();} else { $("#new_color").hide();}})})
 </script>

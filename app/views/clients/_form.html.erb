@@ -64,5 +64,5 @@
 <% end %>
 
 <script>
-  $(function() {$("#herpes_info_container").hide(); $("#client_herpes").live("click", function() {$("#herpes_info_container").toggle('fast');});});
+  $(function() {if(!$("#client_herpes").is(':checked')) {$("#herpes_info_container").hide();} $("#client_herpes").live("click", function() {$("#herpes_info_container").toggle('fast');});});
 </script>
