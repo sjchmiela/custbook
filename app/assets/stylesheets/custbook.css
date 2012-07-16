@@ -79,3 +79,5 @@ form .smaller.actions
 .no-data { color: #666; margin-left: 10px;}
 .small-treatment-form { margin-bottom: 0;}
 .small-treatment-form .form-actions { margin-bottom: 0;}
+td:nth-child(6) { width: 210px; }
+td:nth-child(5) { min-width: 64px; }

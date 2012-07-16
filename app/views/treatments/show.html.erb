@@ -1,4 +1,4 @@
-<div class="page-header"><h1>Zabieg #<%= @treatment.id %></h1><% if @treatment.correction %><span class="label label-warning">KOREKTA</span><% end %></div>
+<div class="page-header"><h1>Zabieg #<%= @treatment.id %></h1><% if @treatment.correction %><span class="label label-warning">KOREKTA</span><% end %><%= raw ((@treatment.young?) ? " <span class='label label-important'>#{t 'treatment.young'}</span>" : "")+((@treatment.old?) ? " <span class='label label-important'>#{t 'treatment.old'}</span>" : "") %></div>
 <% if notice != nil %>
 <div class="alert-message alert alert-success" id="notice"><strong><%= notice %></strong></div>
 <% end %>
@@ -22,7 +22,7 @@ Nieznana</p>
 <p><strong>Rodzaj zabiegu:</strong><br /><%= nodata @treatment.ttype %></p>
 <p><strong>Cena zabiegu:</strong><br /><%= nodata((@treatment.price) ? (pln(@treatment.price)) : "") %></p>
 <p><strong>Użyty kolor:</strong><br /><%= nodata(@treatment.color) %></p>
-<p><strong>Data zabiegu:</strong><br /><%= @treatment.date.to_formatted_s(:rfc822) %></p>
+<p><strong>Data zabiegu:</strong><br /><%= @treatment.date_polish %></p>
 </div>
 <% if @treatment.correction %>
 <div class="span4">

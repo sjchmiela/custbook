@@ -1,5 +1,5 @@
 class Client < ActiveRecord::Base
-  attr_accessible :additional_info, :allergy, :birthday, :cell, :country, :diabetes, :email, :found, :herpes, :name, :nid, :phone, :pregnancy, :psoriasis, :sensitive_skin, :steroids, :surname, :yellows, :herpes_info
+  attr_accessible :additional_info, :allergy, :birthday, :cell, :country, :diabetes, :email, :found, :herpes, :name, :nid, :pregnancy, :psoriasis, :sensitive_skin, :steroids, :surname, :yellows, :herpes_info
   validates :surname, :presence => true
   before_save :update_birthday
   has_many :treatments

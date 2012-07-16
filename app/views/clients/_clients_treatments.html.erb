@@ -3,7 +3,7 @@
 	<ol>
 		<% @client.treatments.each do |t| %>
 		<% sum += t.price.to_i %>
-			<li><%= link_to t.date.to_s, t%>: <%= raw treatment_info_in_client t %></li>
+			<li><%= link_to t.date_polish, t%>: <%= raw treatment_info_in_client t %></li>
 		<% end %>
 	</ol>
 	<p><strong><%= t "treatment.all_price" %>:</strong>	<%= pln(sum) %></p>

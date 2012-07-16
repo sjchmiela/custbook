@@ -16,6 +16,8 @@ pl:
     update:
       success: "Dane klientki zedytowane pomyślnie."
   treatment:
+    old: "28-30 miesięcy temu"
+    young: "16-18 miesięcy temu"
     correction: "KOREKTA"
     count: "Razem zabiegów"
     all_price: "Razem złotych"

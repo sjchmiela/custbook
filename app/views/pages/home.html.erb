@@ -1,2 +1,25 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="page-header"><h1>Strona startowa</h1></div>
+<div class="row"><div class="span6">
+<% if @treatments_old.any? %>
+    <h3>Zabiegi wykonane 28 - 30 miesięcy temu:</h3>
+    <ul>
+        <% @treatments_old.each do |t| %>
+            <li><%= link_to t.client.full_name, t.client %><% if !t.client.email.empty? %> &lt;<%= mail_to t.client.email %>&gt;<% end %><% if !t.client.cell.empty? %> (tel. <%= t.client.cell %>)<% end %>: <%= link_to t.ttype, t %> w dniu <%= t.date %></li>
+        <% end %>
+    </ul>
+<% end %>
+<% if (@treatments_old.any? or @treatments_young.any?) %>
+    <hr />
+<% end %>
+<% if @treatments_young.any? %>
+    <h3>Zabiegi wykonane 16 - 18 miesięcy temu:</h3>
+    <ul>
+        <% @treatments_young.each do |t| %>
+            <li><%= link_to t.client.full_name, t.client %><% if !t.client.email.empty? %> &lt;<%= mail_to t.client.email %>&gt;<% end %><% if !t.client.cell.empty? %> (tel. <%= t.client.cell %>)<% end %>: <%= link_to t.ttype, t %> w dniu <%= t.date %></li>
+        <% end %>
+    </ul>
+<% end %>
+<% if !(@treatments_old.any? or @treatments_young.any?) %>
+    <p>Brak specjalnych zabiegów.</p>
+<% end %>
+</div><div class="span4"><%= client_create_button %><hr /><%= treatment_create_button %><hr /><%= link_to (raw "<i class='icon-user'></i> Lista klientek"), search_client_path, :class => [:btn, "btn-primary"] %><hr /><%= link_to (raw "<i class='icon-list'></i> Lista zabiegów"), search_treatment_path, :class => [:btn, "btn-primary"] %></div></div>

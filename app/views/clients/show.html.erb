@@ -15,7 +15,6 @@
 <div class="span4">
 <p><strong>Urodziny:</strong> <%= @client.birthday.nil? ? nodatatext : @client.birthday %></p>
 <p><strong>PESEL:</strong> <%= nodata @client.nid %></p>
-<p><strong>Tel. domowy:</strong> <%= nodata @client.phone %></p>
 <p><strong>Tel. komórkowy:</strong> <%= nodata @client.cell %></p>
 <p><strong>Adres e-mail:</strong> <%= @client.email.empty? ? nodatatext : (mail_to @client.email) %></p>
 <p><strong>Dowiedziała się przez:</strong> <%= nodata @client.found %></p>
@@ -30,9 +29,9 @@
 <% if @client.herpes %><li>Opryszczka<% if @client.herpes_info %> (<%= @client.herpes_info%>)<% end %></li><% end %>
 </ul>
 <% else %>
-<span class="no-data"><%= t "client.details.absence" %></span><% end %>
+<%= nodatatext %><% end %>
 <p><strong>Uwagi:</strong><br />
-<% if @client.additional_info.empty? %><span class="no-data"><%= t "client.details.absence" %></span><% end %><%= @client.additional_info %></p>
+<%= nodata @client.additional_info %></p>
 </div>
 <div class="span6">
 <h2 id="treatments">Zabiegi</h2>

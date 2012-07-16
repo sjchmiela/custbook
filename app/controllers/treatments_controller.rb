@@ -4,11 +4,6 @@ class TreatmentsController < ApplicationController
     @treatments = Treatment.all
   end
 
-  def page
-    @page = params[:page] == nil ? 1 : params[:page].to_i
-    @treatments = Treatment.order(:date).limit(10).offset((@page-1)*10)
-  end
-
   def show
     @treatment = Treatment.find(params[:id])
   end

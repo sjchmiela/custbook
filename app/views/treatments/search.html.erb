@@ -2,7 +2,6 @@
 <div class="row">
 <div class="span6">
 <%= treatment_create_button %>
-<%= link_to 'Stronicowe przeglądanie', treatments_path, :class => [:btn, "btn-info"] %>
 </div>
 <div class="span4 pull-right">
 <input type="text" class="filter" name="livefilter" placeholder="Szukaj" />
@@ -32,9 +31,9 @@ $(function() {
  <tr>
     <td><%= treatment.id %></td>
     <td><%= link_to treatment.client.full_name, treatment.client %></td>
-    <td><%= treatment.ttype %><% if treatment.correction %> <span class="label label-warning">KOREKTA</span><% end %></td>
+    <td><%= treatment.ttype %><% if treatment.correction %> <span class="label label-warning">KOREKTA</span><% end %><%= raw ((treatment.young?) ? " <span class='label label-important'>#{t 'treatment.young'}</span>" : "")+((treatment.old?) ? " <span class='label label-important'>#{t 'treatment.old'}</span>" : "") %></td>
     <td><%= treatment.color %></td>
-    <td><%= treatment.date %></td>
+    <td><%= treatment.date_polish %></td>
     <td><div class="btn-group"><%= treatment_show_button treatment %>
     <%= treatment_edit_button treatment %>
     <%= treatment_destroy_button treatment %></div></td>

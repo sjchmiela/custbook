@@ -4,11 +4,6 @@ class ClientsController < ApplicationController
     @clients = Client.all
   end
 
-  def page
-    @page = params[:page] == nil ? 1 : params[:page].to_i
-    @clients = Client.order(:name).limit(10).offset((@page-1)*10)
-  end
-
   def show
     @client = Client.find(params[:id])
   end
