@@ -1,4 +1,6 @@
 Custbook::Application.routes.draw do
+  get "pages/home"
+
   match 'treatments/page/:id' => 'treatments#page', :as => :treatments_page, :via => :get
   match 'treatments/search' => 'treatments#search', :as => :search_treatment, :via => :get
   match 'treatments' => 'treatments#page', :as => :treatments, :via => :get
