@@ -21,7 +21,11 @@ class TreatmentsController < ApplicationController
     update_color(params)
     @treatment = Treatment.new(params[:treatment])
     if @treatment.save
-      redirect_to(@treatment, :notice => t("treatment.create.success"))
+      if params[:small] == "true"
+	redirect_to @treatment.client, :notice => t("treatment.create.success")
+      else
+	redirect_to(@treatment, :notice => t("treatment.create.success"))
+      end
     else
       render :action => "new"
     end
