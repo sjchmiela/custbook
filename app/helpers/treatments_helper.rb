@@ -15,6 +15,6 @@ module TreatmentsHelper
 		return ((t.ttype.to_s.empty?) ? "<span style='color: grey'>Nieznany rodzaj</span>" : t.ttype)+" &mdash; "+((t.color.to_s.empty?) ? "<span style='color: grey'>Nieznany kolor</span>" : t.color)+((t.correction) ? " <span class='label label-warning'>#{t 'treatment.correction'}</span>" : "")+((t.young?) ? " <span class='label label-important'>#{t 'treatment.young'}</span>" : "")+((t.old?) ? " <span class='label label-important'>#{t 'treatment.old'}</span>" : "")
 	end
         def treatment_correction (treatment)
-                return ((treatment.correction?) ? "<span class='label label-warning'>#{t 'treatment.correction'}</span>" : "")
+                return (raw ((treatment.correction?) ? "<span class='label label-warning'>#{t 'treatment.correction'}</span>" : ""))
         end
 end
