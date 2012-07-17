@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20120716101209) do
     t.string   "email"
     t.string   "country"
     t.boolean  "diabetes"
-    t.boolean  "psoriasis",       :limit => 255
+    t.boolean  "psoriasis"
     t.boolean  "steroids"
     t.boolean  "pregnancy"
     t.boolean  "yellows"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(:version => 20120716101209) do
     t.boolean  "herpes"
     t.string   "found"
     t.text     "additional_info"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "herpes_info"
   end
 
