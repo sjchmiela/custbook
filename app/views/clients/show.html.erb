@@ -16,7 +16,9 @@
 <p><strong>Urodziny:</strong> <%= @client.birthday.nil? ? nodatatext : @client.birthday %></p>
 <p><strong>PESEL:</strong> <%= nodata @client.nid %></p>
 <p><strong>Tel. komórkowy:</strong> <%= nodata @client.cell %></p>
+<p><strong>Miejscowość/Kraj:</strong> <%= nodata @client.country %></p>
 <p><strong>Adres e-mail:</strong> <%= @client.email.empty? ? nodatatext : (mail_to @client.email) %></p>
+<p><strong>Stworzona dnia:</strong> <%= @client.created_at.strftime("%d-%m-%Y") %></p>
 <p><strong>Dowiedziała się przez:</strong> <%= nodata @client.found %></p>
 <strong>Przeciwwskazania:</strong><br /><% if @client.any_contraindications? %><ul>
 <% if @client.diabetes %><li>Cukrzyca</li><% end %>
@@ -26,7 +28,7 @@
 <% if @client.yellows %><li>Żółtaczka</li><% end %>
 <% if @client.allergy %><li>Alergie</li><% end %>
 <% if @client.sensitive_skin %><li>Wrażliwa skóra</li><% end %>
-<% if @client.herpes %><li>Opryszczka<% if @client.herpes_info %> (<%= @client.herpes_info%>)<% end %></li><% end %>
+<% if @client.herpes %><li>Opryszczka<% if !@client.herpes_info.empty? %> (<%= @client.herpes_info%>)<% end %></li><% end %>
 </ul>
 <% else %>
 <%= nodatatext %><% end %>
@@ -39,7 +41,7 @@
 <hr />
 <div class="well">
 	<h2>Dodaj zabieg</h2>
-<%= render :partial => 'treatments/form_small.html.erb', :locals => {:treatment => Treatment.new({:client_id => @client.id})} %>
+<%= render :partial => 'treatments/form_small', :locals => {:treatment => Treatment.new({:client_id => @client.id})} %>
 </div>
 </div>
 </div>
