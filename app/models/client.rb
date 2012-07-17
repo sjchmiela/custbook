@@ -10,7 +10,7 @@ class Client < ActiveRecord::Base
 
   def update_birthday
     if self.nid.size >= 6 and self.birthday == nil
-      self.birthday = Date.strptime(self.nid[0..5],"%y%m%d")
+      self.birthday = Date.strptime("19"+self.nid[0..5],"%Y%m%d")
     end
   end
   
