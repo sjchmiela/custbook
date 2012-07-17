@@ -25,13 +25,15 @@ Clients:
 16. `herpes:boolean`
 17. `found:string`
 18. `additional_info:text`
+19. `herpes_info:string`
 
 Treatments:
 
-1. `type:string`
+1. `ttype:string`
 2. `date:date`
 3. `client_id:integer`
 4. `price:decimal`
-5. `colour:string`
+5. `color:string`
 6. `correction:boolean`
 5. `additional_info:text`
+
