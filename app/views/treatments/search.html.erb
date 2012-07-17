@@ -33,7 +33,7 @@ $(function() {
     <td><%= link_to treatment.client.full_name, treatment.client %></td>
     <td><%= treatment.ttype %><% if treatment.correction %> <span class="label label-warning">KOREKTA</span><% end %><%= raw ((treatment.young?) ? " <span class='label label-important'>#{t 'treatment.young'}</span>" : "")+((treatment.old?) ? " <span class='label label-important'>#{t 'treatment.old'}</span>" : "") %></td>
     <td><%= treatment.color %></td>
-    <td><%= treatment.date_polish %></td>
+    <td><%= treatment.date %></td>
     <td><div class="btn-group"><%= treatment_show_button treatment %>
     <%= treatment_edit_button treatment %>
     <%= treatment_destroy_button treatment %></div></td>
