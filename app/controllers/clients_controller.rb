@@ -1,7 +1,7 @@
 
 class ClientsController < ApplicationController
   def search
-    @clients = Client.all
+    @clients = Client.order("surname")
   end
 
   def show
