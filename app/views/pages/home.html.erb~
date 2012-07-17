@@ -4,7 +4,7 @@
     <h3>Zabiegi wykonane 28 - 30 miesięcy temu:</h3>
     <ul>
         <% @treatments_old.each do |t| %>
-            <li><%= link_to t.client.full_name, t.client %><% if !t.client.email.empty? %> &lt;<%= mail_to t.client.email %>&gt;<% end %><% if !t.client.cell.empty? %> (tel. <%= t.client.cell %>)<% end %>: <%= link_to t.ttype, t %> w dniu <%= t.date %></li><br />
+            <li><%= link_to t.client.full_name, t.client %><% if !t.client.email.empty? %> &lt;<%= mail_to t.client.email %>&gt;<% end %><% if !t.client.cell.empty? %> (tel. <%= t.client.cell %>)<% end %>: <%= link_to t.ttype, t %> w dniu <%= t.date %></li>
         <% end %>
     </ul>
 <% end %>
@@ -15,7 +15,7 @@
     <h3>Zabiegi wykonane 16 - 18 miesięcy temu:</h3>
     <ul>
         <% @treatments_young.each do |t| %>
-            <li><%= link_to t.client.full_name, t.client %><% if !t.client.email.empty? %> &lt;<%= mail_to t.client.email %>&gt;<% end %><% if !t.client.cell.empty? %> (tel. <%= t.client.cell %>)<% end %>: <%= link_to t.ttype, t %> w dniu <%= t.date %></li><br />
+            <li><%= link_to t.client.full_name, t.client %><% if !t.client.email.empty? %> &lt;<%= mail_to t.client.email %>&gt;<% end %><% if !t.client.cell.empty? %> (tel. <%= t.client.cell %>)<% end %>: <%= link_to t.ttype, t %> w dniu <%= t.date %></li>
         <% end %>
     </ul>
 <% end %>
