@@ -1,4 +1,5 @@
 <%= form_for(treatment, :html => {:class => "form-vertical small-treatment-form"}) do |f| %>
+<input type="hidden" name="small" value="true" />
   <%= f.hidden_field :client_id %>
   <div class="control-group">
     <%= f.label :ttype, "Rodzaj zabiegu", :class => "control-label" %><div class="controls">
@@ -32,7 +33,7 @@
     <%= f.check_box :correction %></div>
   </div>
   <div class="control-group">
-    <%= f.label :additional_info, "Uwagi", :class => "control-label" %><div class="controls"><%= f.text_area :additional_info %></div>
+    <%= f.label :additional_info, "Uwagi", :class => "control-label" %><div class="controls"><%= f.text_area :additional_info, :size => "40x7" %></div>
   </div>
   <div class="form-actions">
     <%= f.submit "Zapisz zabieg", :class => [:btn, "btn-primary"] %>
