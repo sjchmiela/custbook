@@ -1,7 +1,7 @@
-<% if @client.treatments.any? %>
+<% if treatments.any? %>
 	<% sum = 0 %>
 	<ol>
-		<% @client.treatments.each do |t| %>
+		<% treatments.each do |t| %>
 		<% sum += t.price.to_i %>
 			<li><%= link_to t.date_polish, t%>: <%= raw treatment_info_in_client t %></li>
 		<% end %>

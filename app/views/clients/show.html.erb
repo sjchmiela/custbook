@@ -1,47 +1,46 @@
 <div class="page-header">
-<h1><%= @client.full_name %></h1>
+<h1><%= client.full_name %></h1>
 </div>
 <% if notice != nil %>
 <div class="alert-message alert alert-success" id="notice"><strong><%= notice %></strong></div>
 <% end %>
 <div class="row">
 <div class="btn-group pull-right">
-<%= client_edit_button @client %>
-<%= client_destroy_button @client %>
+<%= client_edit_button client %>
+<%= client_destroy_button client %>
 </div>
 </div>
 <hr />
 <div class="row">
 <div class="span4">
-<p><strong>Urodziny:</strong> <%= @client.birthday.nil? ? nodatatext : @client.birthday %></p>
-<p><strong>PESEL:</strong> <%= nodata @client.nid %></p>
-<p><strong>Tel. komórkowy:</strong> <%= nodata @client.cell %></p>
-<p><strong>Miejscowość/Kraj:</strong> <%= nodata @client.country %></p>
-<p><strong>Adres e-mail:</strong> <%= @client.email.empty? ? nodatatext : (mail_to @client.email) %></p>
-<p><strong>Stworzona dnia:</strong> <%= @client.created_at.strftime("%d-%m-%Y") %></p>
-<p><strong>Dowiedziała się przez:</strong> <%= nodata @client.found %></p>
-<strong>Przeciwwskazania:</strong><br /><% if @client.any_contraindications? %><ul>
-<% if @client.diabetes %><li>Cukrzyca</li><% end %>
-<% if @client.psoriasis %><li>Łuszczyca</li><% end %>
-<% if @client.steroids %><li>Leki sterydowe</li><% end %>
-<% if @client.pregnancy %><li>Ciąża</li><% end %>
-<% if @client.yellows %><li>Żółtaczka</li><% end %>
-<% if @client.allergy %><li>Alergie</li><% end %>
-<% if @client.sensitive_skin %><li>Wrażliwa skóra</li><% end %>
-<% if @client.herpes %><li>Opryszczka<% if !@client.herpes_info.empty? %> (<%= @client.herpes_info%>)<% end %></li><% end %>
+<p><strong><%= t "client.birthday" %>:</strong> <%= client.birthday.nil? ? nodatatext : client.birthday %></p>
+<p><strong><%= t "client.nid" %>:</strong> <%= nodata client.nid %></p>
+<p><strong><%= t "client.cell" %></strong> <%= nodata client.cell %></p>
+<p><strong><%= t "client.country" %>:</strong> <%= nodata client.country %></p>
+<p><strong><%= t "client.email" %>:</strong> <%= client.email.empty? ? nodatatext : (mail_to client.email) %></p>
+<p><strong><%= t "client.created_at" %>:</strong> <%= client.created_at.strftime("%d-%m-%Y") %></p>
+<p><strong><%= t "client.found" %>:</strong> <%= nodata client.found %></p>
+<strong><%= t "client.contraindications" %>:</strong><br /><% if client.any_contraindications? %><ul>
+<% if client.diabetes %><li><%= t "client.diabetes" %></li><% end %>
+<% if client.psoriasis %><li><%= t "client.psoriasis" %></li><% end %>
+<% if client.steroids %><li><%= t "client.steroids" %></li><% end %>
+<% if client.pregnancy %><li><%= t "client.pregnancy" %></li><% end %>
+<% if client.yellows %><li><%= t "client.yellows" %></li><% end %>
+<% if client.allergy %><li><%= t "client.allergy" %></li><% end %>
+<% if client.sensitive_skin %><li><%= t "client.sensitive_skin" %></li><% end %>
+<% if client.herpes %><li><%= t "client.herpes" %><% if !client.herpes_info.empty? %> (<%= client.herpes_info%>)<% end %></li><% end %>
 </ul>
 <% else %>
 <%= nodatatext %><% end %>
-<p><strong>Uwagi:</strong><br />
-<%= nodata @client.additional_info %></p>
+<p><strong><%= t "client.additional_info" %>:</strong><br />
+<%= nodata client.additional_info %></p>
 </div>
 <div class="span6">
-<h2 id="treatments">Zabiegi</h2>
+<h2 id="treatments"><%= t "client.treatments" %></h2>
 <%= render 'clients_treatments' %>
 <hr />
 <div class="well">
-	<h2>Dodaj zabieg</h2>
-<%= render :partial => 'treatments/form_small', :locals => {:treatment => Treatment.new({:client_id => @client.id})} %>
+<%= render :partial => 'treatments/form_small', :locals => {:treatment => Treatment.new({:client_id => client.id})} %>
 </div>
 </div>
 </div>
