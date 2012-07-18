@@ -9,6 +9,9 @@ module ClientsHelper
 		return link_to (raw t "client.edit.button"), edit_client_path(client), :class => [:btn, "btn-info"]
 	end
 	def client_destroy_button (client)
-		return link_to (raw t "client.delete.button"), client, :confirm => (t "client.delete.confirm"), :class => [:btn, "btn-danger"], :method => :delete
+		return link_to (raw t "client.delete.button"), destroy_client_path(client), :confirm => (t "client.delete.confirm"), :class => [:btn, "btn-danger"]
+	end
+	def clients_button
+		return link_to (raw t "client.index.button"), clients_path, :class => [:btn, "btn-primary"]
 	end
 end
