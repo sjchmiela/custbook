@@ -9,7 +9,7 @@ module TreatmentsHelper
 		return link_to (raw t "treatment.edit.button"), edit_treatment_path(treatment), :class => [:btn, "btn-info"]
 	end
 	def treatment_destroy_button (treatment)
-		return link_to (raw t "treatment.delete.button"), treatment, :confirm => (raw t "treatment.delete.confirm"), :class => [:btn, "btn-danger"], :method => :delete
+		return link_to (raw t "treatment.delete.button"),  destroy_treatment_path(treatment), :confirm => (t "treatment.delete.confirm"), :class => [:btn, "btn-danger"]
 	end
     def treatment_correction (treatment)
         return (raw ((treatment.correction?) ? " <span class='label label-warning'>#{t 'treatment.correction.label'}</span>" : ""))
