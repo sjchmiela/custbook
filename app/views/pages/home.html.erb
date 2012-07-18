@@ -1,25 +1,34 @@
-<div class="page-header"><h1>Strona startowa</h1></div>
+<div class="page-header"><h1><%= t "home.heading" %></h1></div>
 <div class="row"><div class="span6">
-<% if @treatments_old.any? %>
-    <h3>Zabiegi wykonane 28 - 30 miesięcy temu:</h3>
+<% if treatments_old.any? %>
+    <h3><%= t "treatment.old_long" %>:</h3>
     <ul>
-        <% @treatments_old.each do |t| %>
-            <li><%= link_to t.client.full_name, t.client %><% if !t.client.email.empty? %> &lt;<%= mail_to t.client.email %>&gt;<% end %><% if !t.client.cell.empty? %> (tel. <%= t.client.cell %>)<% end %>: <%= link_to t.ttype, t %> w dniu <%= t.date %></li><br />
+        <% treatments_old.each do |t| %>
+            <li><%= link_to t.client.full_name, t.client %><% if !t.client.email.empty? %> &lt;<%= mail_to t.client.email %>&gt;<% end %><% if !t.client.cell.empty? %> (<%= t "client.tel" %><%= t.client.cell %>)<% end %>: <%= link_to t.ttype, t %> w dniu <%= t.date %></li><br />
         <% end %>
     </ul>
 <% end %>
-<% if (@treatments_old.any? and @treatments_young.any?) %>
+<% if (treatments_old.any? and treatments_young.any?) %>
     <hr />
 <% end %>
-<% if @treatments_young.any? %>
-    <h3>Zabiegi wykonane 16 - 18 miesięcy temu:</h3>
+<% if treatments_young.any? %>
+    <h3><%= t "treatment.young_long" %>:</h3>
     <ul>
-        <% @treatments_young.each do |t| %>
-            <li><%= link_to t.client.full_name, t.client %><% if !t.client.email.empty? %> &lt;<%= mail_to t.client.email %>&gt;<% end %><% if !t.client.cell.empty? %> (tel. <%= t.client.cell %>)<% end %>: <%= link_to t.ttype, t %> w dniu <%= t.date %> <%= treatment_correction(t) %></li><br />
+        <% treatments_young.each do |t| %>
+            <li><%= link_to t.client.full_name, t.client %><% if !t.client.email.empty? %> &lt;<%= mail_to t.client.email %>&gt;<% end %><% if !t.client.cell.empty? %> (<%= t "client.tel" %><%= t.client.cell %>)<% end %>: <%= link_to t.ttype, t %><%= t "treatment.at" %><%= t.date %> <%= treatment_correction(t) %></li><br />
         <% end %>
     </ul>
 <% end %>
-<% if !(@treatments_old.any? or @treatments_young.any?) %>
-    <p>Brak specjalnych zabiegów.</p>
+<% if !(treatments_old.any? or treatments_young.any?) %>
+    <p><%= t "treatment.no_special" %></p>
 <% end %>
-</div><div class="span4"><%= client_create_button %><hr /><%= treatment_create_button %><hr /><%= link_to (raw "<i class='icon-user'></i> Lista klientek"), search_client_path, :class => [:btn, "btn-primary"] %><hr /><%= link_to (raw "<i class='icon-list'></i> Lista zabiegów"), search_treatment_path, :class => [:btn, "btn-primary"] %></div></div>
+</div>
+<div class="span4">
+    <%= client_create_button %>
+    <hr />
+    <%= treatment_create_button %>
+    <hr />
+    <%= clients_button %>
+    <hr />
+    <%= treatments_button %>
+</div></div>
