@@ -36,7 +36,7 @@ class TreatmentsController < ApplicationController
 
   def destroy
     treatment.destroy
-    respond_with treatment
+    redirect_to treatments_path
   end
 
   private
