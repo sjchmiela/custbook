@@ -1,7 +1,7 @@
 # encoding: utf-8
 module ApplicationHelper
 	def nodata (argument)
-		if argument.empty?
+		if argument.to_s.empty?
 			return (raw "<span class='no-data'>#{t "details.absence"}</span>")
 		else
 			argument
