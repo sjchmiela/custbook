@@ -1,12 +1,50 @@
 pl:
+  home:
+    heading: "Strona startowa"
+
+  cancel: "Anuluj"
+  search: "Szukaj"
+  actions: "Akcje"
+  no_objects_to_display: "Brak obiektów do wyświetlenia."
+  add:
+    new_masculine: "Dodaj nowy"
+  required: "Wymagane"
   details:
       nodata: "Brak danych."
       absence: "Brak danych"
   client:
+    tel: "tel. "
+    one: "Klientka"
+    many: "Klientki"
+    list: "Lista klientek"
+    new: "Nowa klientka"
+    treatments: "Zabiegi"
+    surname: "Nazwisko"
+    name: "Imię"
+    nid: "PESEL"
+    birthday: "Urodziny"
+    cell: "Telefon komórkowy"
+    country: "Miejscowość/Kraj"
+    email: "Adres e-mail"
+    contradictions: "Przeciwwskazania"
+    diabetes: "Cukrzyca"
+    psoriasis: "Łuszczyca"
+    yellows: "Żółtaczka"
+    allergy: "Alergie"
+    steroids: "Leki sterydowe"
+    pregnancy: "Ciąża"
+    sensitive_skin: "Wrażliwa skóra"
+    herpes: "Opryszczka"
+    herpes_info: "Informacje o opryszczce"
+    found: "Jak się dowiedziała"
+    additional_info: "Uwagi"
+    created_at: "Stworzona dnia"
+    submit: "Zapisz klientkę"
     show:
       button: "<i class='icon-user'></i> Pokaż"
     edit:
       button: "<i class='icon-pencil'></i> Edytuj"
+      text: "Edycja klientki"
     delete:
       button: "<i class='icon-trash'></i> Usuń"
       confirm: "Jesteś pewna, że chcesz usunąć klientkę?"
@@ -15,17 +53,44 @@ pl:
       success: "Klientka utworzona pomyślnie."
     update:
       success: "Dane klientki zedytowane pomyślnie."
+    index:
+      button: "<i class='icon-user'></i> Lista klientek"
   treatment:
+    at: " w dniu "
+    no_special: "Brak specjalnych zabiegów."
+    one: "Zabieg"
+    many: "Zabiegi"
+    new: "Nowy zabieg"
+    list: "Lista zabiegów"
+    add: 
+      heading: "Dodaj zabieg"
+    index:
+      button: "<i class='icon-list'></i> Lista zabiegów"
+    ttype: 
+      text: "Rodzaj zabiegu"
+      name: "Nazwa rodzaju zabiegu"
+    price: "Cena"
+    color: 
+      text: "Kolor zabiegu"
+      name: "Nazwa koloru zabiegu"
+    date: "Data"
     old: "28-30 miesięcy temu"
     young: "16-18 miesięcy temu"
-    correction: "KOREKTA"
+    old_long: "Zabiegi wykonane 28-30 miesięcy temu"
+    young_long: "Zabiegi wykonane 16-18 miesięcy temu"
+    correction:
+      label: "KOREKTA"
+      text: "Korekta"
+    additional_info: "Uwagi"
     count: "Razem zabiegów"
     all_price: "Razem złotych"
     no_treatments: "Brak zabiegów."
+    submit: "Zapisz zabieg"
     show:
       button: "<i class='icon-list-alt'></i> Pokaż"
     edit:
       button: "<i class='icon-pencil'></i> Edytuj"
+      text: "Edycja zabiegu"
     delete:
       button: "<i class='icon-trash'></i> Usuń"
       confirm: "Jesteś pewna, że chcesz usunąć ten zabieg?"
