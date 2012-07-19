@@ -1,7 +1,7 @@
 
 class TreatmentsController < ApplicationController
   expose(:treatment)
-  expose(:treatments) { Treatment.order(:date)}
+  expose(:treatments) { Treatment.includes(:client).order(:date)}
   respond_to :html
 
   def search
