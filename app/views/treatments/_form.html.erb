@@ -1,10 +1,10 @@
-<%= form_for(@treatment, :html => {:class => "form-horizontal"}) do |f| %>
-  <% if @treatment.errors.any? %>
+<%= form_for(treatment, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if treatment.errors.any? %>
     <div id="error_explanation" class="alert-message error block-message">
-      <h2><%= pluralize(@treatment.errors.count, "error") %> prohibited this treatment from being saved:</h2>
+      <h2><%= pluralize(treatment.errors.count, "error") %> prohibited this treatment from being saved:</h2>
 
       <ul>
-      <% @treatment.errors.full_messages.each do |msg| %>
+      <% treatment.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,49 +12,49 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :client_id, "Klientka", :class => "control-label" %><div class="controls">
+    <%= f.label :client_id, (t "client.one"), :class => "control-label" %><div class="controls">
    <%= f.select :client_id, Client.order(:surname).all.collect {|p| [(p.surname+" "+p.name), p.id]}, :include_blank => true %></div>
   </div>
   <div class="control-group">
-    <%= f.label :ttype, "Rodzaj zabiegu", :class => "control-label" %><div class="controls">
+    <%= f.label :ttype, (t "treatment.ttype.text"), :class => "control-label" %><div class="controls">
       <select name="ttype_from_selection" id="ttype_from_selection">
         <option value=""></option>
-        <option value="new">Dodaj nowy</option>
+        <option value="new"><%= (t "add.new_masculine") %></option>
       <%= options_from_collection_for_select(Treatment.where("ttype != ''").select("DISTINCT(ttype)").order(:ttype),"ttype","ttype") %>
     </select>
-    <%= f.text_field :ttype, :id => "new_ttype", :placeholder => "Nazwa nowego rodzaju" %>
+    <%= f.text_field :ttype, :id => "new_ttype", :placeholder => (t "treatment.ttype.name") %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :price, "Cena", :class => "control-label" %><div class="controls"><div class="input-append">
+    <%= f.label :price, (t "treatment.price"), :class => "control-label" %><div class="controls"><div class="input-append">
     <%= f.number_field :price %><span class="add-on">zł</span></div></div>
   </div>
   <div class="control-group">
-    <%= f.label :color, "Kolor", :class => "control-label" %><div class="controls">
+    <%= f.label :color, (t "treatment.color.text"), :class => "control-label" %><div class="controls">
     <select name="color_from_selection" id="color_from_selection">
         <option value=""></option>
-        <option value="new">Dodaj nowy</option>
+        <option value="new"><%= (t "add.new_masculine") %></option>
       <%= options_from_collection_for_select(Treatment.where("color != ''").select("DISTINCT(color)").order(:color),"color","color") %>
     </select>
-    <%= f.text_field :color, :id => "new_color", :placeholder => "Nazwa nowego koloru" %></div>
+    <%= f.text_field :color, :id => "new_color", :placeholder => (t "treatment.color.name") %></div>
   </div>
   <div class="control-group">
-    <%= f.label :date, "Data", :class => "control-label" %><div class="controls">
+    <%= f.label :date, (t "treatment.date"), :class => "control-label" %><div class="controls">
     <%= f.date_select :date, :order => [:day, :month, :year] %></div>
   </div>
   <div class="control-group">
-    <%= f.label :correction, "Korekta", :class => "control-label" %><div class="controls">
+    <%= f.label :correction, (t "treatment.correction.text"), :class => "control-label" %><div class="controls">
     <%= f.check_box :correction %></div>
   </div>
   <div class="control-group">
-    <%= f.label :additional_info, "Uwagi", :class => "control-label" %><div class="controls"><%= f.text_area :additional_info %></div>
+    <%= f.label :additional_info, (t "treatment.additional_info"), :class => "control-label" %><div class="controls"><%= f.text_area :additional_info, :size => "40x7" %></div>
   </div>
   <div class="form-actions">
-    <%= f.submit "Zapisz zabieg", :class => [:btn, "btn-primary"] %>
-    <%= link_to "Anuluj", treatments_path, :class => [:btn] %>
+    <%= f.submit (t "treatment.submit"), :class => [:btn, "btn-primary"] %>
+    <%= link_to (t "cancel"), treatments_path, :class => [:btn] %>
   </div>
 <% end %>
 <script>
-  $(function(){$("#new_ttype").hide();<% if @treatment.ttype %>$("#ttype_from_selection option").each(function(el) {if($(this).text() == "<%= @treatment.ttype %>") { $(this).attr("selected", "selected");}});<% end %>$("#ttype_from_selection").live("change", function(){if($("#ttype_from_selection option:selected").text() == "Dodaj nowy") {$("#new_ttype").show();} else { $("#new_ttype").hide();}})})
-  $(function(){$("#new_color").hide();<% if @treatment.color %>$("#color_from_selection option").each(function(el) {if($(this).text() == "<%= @treatment.color %>") { $(this).attr("selected", "selected");}});<% end %>$("#color_from_selection").live("change", function(){if($("#color_from_selection option:selected").text() == "Dodaj nowy") {$("#new_color").show();} else { $("#new_color").hide();}})})
+  $(function(){$("#new_ttype").hide();<% if treatment.ttype %>$("#ttype_from_selection option").each(function(el) {if($(this).text() == "<%= treatment.ttype %>") { $(this).attr("selected", "selected");}});<% end %>$("#ttype_from_selection").live("change", function(){if($("#ttype_from_selection option:selected").text() == "Dodaj nowy") {$("#new_ttype").show();} else { $("#new_ttype").hide();}})})
+  $(function(){$("#new_color").hide();<% if treatment.color %>$("#color_from_selection option").each(function(el) {if($(this).text() == "<%= treatment.color %>") { $(this).attr("selected", "selected");}});<% end %>$("#color_from_selection").live("change", function(){if($("#color_from_selection option:selected").text() == "Dodaj nowy") {$("#new_color").show();} else { $("#new_color").hide();}})})
 </script>

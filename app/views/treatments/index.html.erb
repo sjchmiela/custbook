@@ -1,10 +1,10 @@
-<div class="page-header"><h1>Lista zabiegów</h1></div>
+<div class="page-header"><h1><%= t "treatment.list" %></h1></div>
 <div class="row">
 <div class="span6">
 <%= treatment_create_button %>
 </div>
 <div class="span4 pull-right">
-<input type="text" class="filter" name="livefilter" placeholder="Szukaj" />
+<input type="text" class="filter" name="livefilter" placeholder="<%= t "search" %>" />
 </div>
 </div>
 <br />
@@ -18,20 +18,20 @@ $(function() {
 <thead>
   <tr>
     <th class="header headerSortDown">#</th>
-    <th class="green">Klientka</th>
-    <th class="blue">Rodzaj</th>
-    <th class="red">Kolor</th>
-    <th class="orange">Data</th>
-    <th>Akcje</th>
+    <th class="green"><%= t "client.one" %></th>
+    <th class="blue"><%= t "treatment.ttype.text" %></th>
+    <th class="red"><%= t "treatment.color.text" %></th>
+    <th class="orange"><%= t "treatment.date" %></th>
+    <th><%= t "actions" %></th>
   </tr>
 </thead>
 <tbody>
-<% if @treatments.any? %>
-<% @treatments.each do |treatment| %>
+<% if treatments.any? %>
+<% treatments.each do |treatment| %>
  <tr>
     <td><%= treatment.id %></td>
     <td><%= link_to treatment.client.full_name, treatment.client %></td>
-    <td><%= treatment.ttype %><% if treatment.correction %> <span class="label label-warning">KOREKTA</span><% end %><%= raw ((treatment.young?) ? " <span class='label label-important'>#{t 'treatment.young'}</span>" : "")+((treatment.old?) ? " <span class='label label-important'>#{t 'treatment.old'}</span>" : "") %></td>
+    <td><%= treatment.ttype %><%= treatment_labels(treatment) %></td>
     <td><%= treatment.color %></td>
     <td><%= treatment.date %></td>
     <td><div class="btn-group"><%= treatment_show_button treatment %>
@@ -40,7 +40,7 @@ $(function() {
   </tr>
 <% end %>
 <% else %>
-<tr><td colspan="6">Brak obiektów do wyświetlenia</td></tr>
+<tr><td colspan="6"><%= t "no_objects_to_display" %></td></tr>
 <% end %>
 </tbody>
 </table>

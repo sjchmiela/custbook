@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
-  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <!--<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>-->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 </head>
@@ -15,10 +15,10 @@
 		<div class="container">
 			<%= link_to "Custbook", home_path, :class => :brand %>
 			<ul class="nav">
-				<li><%= link_to "Klientki", search_client_path, :class => :left %></li>
-				<li<% if params[:controller] == "clients" and (params[:action] == "new" or params[:action] == "create")%> class="active"<% end %>><%= link_to "+", new_client_path, :class => :right %></li>
-				<li><%= link_to "Zabiegi", search_treatment_path, :class => :left %></li>
-				<li<% if params[:controller] == "treatments" and (params[:action] == "new" or params[:action] == "create")%> class="active"<% end %>><%= link_to "+", new_treatment_path, :class => :right %></li>
+				<li><%= link_to (t "client.many"), clients_path, :class => :left %></li>
+				<li><%= link_to "+", new_client_path, :class => :right %></li>
+				<li><%= link_to (t "treatment.many"), treatments_path, :class => :left %></li>
+				<li><%= link_to "+", new_treatment_path, :class => :right %></li>
 			</ul>
 		</div>
 	</div>

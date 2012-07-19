@@ -1,32 +1,27 @@
-<div class="page-header"><h1>Zabieg #<%= @treatment.id %></h1><% if @treatment.correction %><span class="label label-warning">KOREKTA</span><% end %><%= raw ((@treatment.young?) ? " <span class='label label-important'>#{t 'treatment.young'}</span>" : "")+((@treatment.old?) ? " <span class='label label-important'>#{t 'treatment.old'}</span>" : "") %></div>
+<div class="page-header"><h1>Zabieg #<%= treatment.id %></h1><%= treatment_labels(treatment) %></div>
 <% if notice != nil %>
 <div class="alert-message alert alert-success" id="notice"><strong><%= notice %></strong></div>
 <% end %>
 <div class="row">
 <div class="btn-group pull-right">
-<%= treatment_edit_button @treatment %>
-<%= treatment_destroy_button @treatment %>
+<%= treatment_edit_button treatment %>
+<%= treatment_destroy_button treatment %>
 </div>
 </div>
 <hr />
 <div class="row">
 <div class="span4">
-<p><strong>Klientka:</strong><br />
-<% if @treatment.client != nil %>
-<%= link_to @treatment.client.full_name, @treatment.client %></p>
+<p><strong><%= t "client.one" %>:</strong><br />
+<% if treatment.client != nil %>
+<%= link_to treatment.client.full_name, treatment.client %></p>
 <% else %>
-Nieznana</p>
+<%= nodatatext %></p>
 <% end %>
 </div>
 <div class="span4">
-<p><strong>Rodzaj zabiegu:</strong><br /><%= nodata @treatment.ttype %></p>
-<p><strong>Cena zabiegu:</strong><br /><%= nodata((@treatment.price) ? (pln(@treatment.price)) : "") %></p>
-<p><strong>Użyty kolor:</strong><br /><%= nodata(@treatment.color) %></p>
-<p><strong>Data zabiegu:</strong><br /><%= @treatment.date_polish %></p>
+<p><strong><%= t "treatment.ttype.text" %>:</strong><br /><%= nodata treatment.ttype %></p>
+<p><strong><%= t "treatment.price" %>:</strong><br /><%= nodata((treatment.price) ? (pln(treatment.price)) : "") %></p>
+<p><strong><%= t "treatment.color.text" %>:</strong><br /><%= nodata(treatment.color) %></p>
+<p><strong><%= t "treatment.date" %>:</strong><br /><%= treatment.date_polish %></p>
 </div>
-<% if @treatment.correction %>
-<div class="span4">
-<strong>Zabieg był korektą.</strong>
-</div>
-<% end %>
 </div>

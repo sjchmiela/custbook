@@ -14,3 +14,4 @@
 //= require jquery.liveFilter
 //= require jquery.tablesorter
 //= require rails
+//= require standalone

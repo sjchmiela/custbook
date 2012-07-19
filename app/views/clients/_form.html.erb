@@ -1,9 +1,9 @@
-<%= form_for(@client, :html => {:class => "form-horizontal"}) do |f| %>
-  <% if @client.errors.any? %>
+<%= form_for(client, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if client.errors.any? %>
     <div id="error_explanation" class="alert alert-error alert-message block-message error">
-      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
       <ul>
-      <% @client.errors.full_messages.each do |msg| %>
+      <% client.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -11,56 +11,56 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :surname, "Nazwisko", :class => "control-label" %><div class="controls">
-    <%= f.text_field :surname %> <span class="help-inline">Wymagane</span></div>
+    <%= f.label :surname, (t "client.surname"), :class => "control-label" %><div class="controls">
+    <%= f.text_field :surname %> <span class="help-inline"><%= t "required" %></span></div>
   </div>
   <div class="control-group">
-    <%= f.label :name, "Imię", :class => "control-label" %><div class="controls">
+    <%= f.label :name, (t "client.name"), :class => "control-label" %><div class="controls">
     <%= f.text_field :name %></div>
   </div>
   <div class="control-group">
-    <%= f.label :nid, "PESEL", :class => "control-label" %><div class="controls">
+    <%= f.label :nid, (t "client.nid"), :class => "control-label" %><div class="controls">
     <%= f.text_field :nid %></div>
   </div>
   <div class="control-group">
-    <%= f.label :cell, "Telefon komórkowy", :class => "control-label" %><div class="controls">
+    <%= f.label :cell, (t "client.cell"), :class => "control-label" %><div class="controls">
     <%= f.text_field :cell %></div>
   </div>
   <div class="control-group">
-    <%= f.label :country, "Miejscowość/Kraj", :class => "control-label" %><div class="controls">
+    <%= f.label :country, (t "client.country"), :class => "control-label" %><div class="controls">
     <%= f.text_field :country %></div>
   </div>
   <div class="control-group">
-    <%= f.label :email, "Adres e-mail", :class => "control-label" %><div class="controls">
+    <%= f.label :email, (t "client.email"), :class => "control-label" %><div class="controls">
     <%= f.email_field :email %></div>
   </div>
   <div class="control-group">
-    <label class="control-label">Przeciwwskazania</label><div class="controls">
-    <label class="checkbox"><%= f.check_box :diabetes %> <span>Cukrzyca</span></label>
-    <label class="checkbox"><%= f.check_box :psoriasis %> <span>Łuszczyca</span></label>
-    <label class="checkbox"><%= f.check_box :steroids %> <span>Leki sterydowe</span></label>
-    <label class="checkbox"><%= f.check_box :pregnancy %> <span>Ciąża</span></label>
-    <label class="checkbox"><%= f.check_box :yellows %> <span>Żółtaczka</span></label>
-    <label class="checkbox"><%= f.check_box :allergy %> <span>Alergie</span></label>
-    <label class="checkbox"><%= f.check_box :sensitive_skin %> <span>Wrażliwa skóra</span></label>
-    <label class="checkbox"><%= f.check_box :herpes %> <span>Opryszczka</span></label>
+    <label class="control-label"><%= t "client.contradictions" %></label><div class="controls">
+    <label class="checkbox"><%= f.check_box :diabetes %> <span><%= t "client.diabetes" %></span></label>
+    <label class="checkbox"><%= f.check_box :psoriasis %> <span><%= t "client.psoriasis" %></span></label>
+    <label class="checkbox"><%= f.check_box :steroids %> <span><%= t "client.steroids" %></span></label>
+    <label class="checkbox"><%= f.check_box :pregnancy %> <span><%= t "client.pregnancy" %></span></label>
+    <label class="checkbox"><%= f.check_box :yellows %> <span><%= t "client.yellows" %></span></label>
+    <label class="checkbox"><%= f.check_box :allergy %> <span><%= t "client.allergy" %></span></label>
+    <label class="checkbox"><%= f.check_box :sensitive_skin %> <span><%= t "client.sensitive_skin" %></span></label>
+    <label class="checkbox"><%= f.check_box :herpes %> <span><%= t "client.herpes" %></span></label>
     </div>
   </div>
   <div class="control-group" id="herpes_info_container">
-    <%= f.label :herpes_info, "Informacje o opryszczce", :class => "control-label" %><div class="controls">
+    <%= f.label :herpes_info, (t "client.herpes_info"), :class => "control-label" %><div class="controls">
     <%= f.text_field :herpes_info %></div>
   </div>
   <div class="control-group">
-    <%= f.label :found, "Jak się dowiedziała", :class => "control-label" %><div class="controls">
+    <%= f.label :found, (t "client.found"), :class => "control-label" %><div class="controls">
     <%= f.text_field :found %></div>
   </div>
   <div class="control-group">
-    <%= f.label :additional_info, "Uwagi", :class => "control-label" %><div class="controls">
+    <%= f.label :additional_info, (t "client.additional_info"), :class => "control-label" %><div class="controls">
     <%= f.text_area :additional_info, :size => "10x5" %></div>
   </div>
   <div class="form-actions">
-    <%= f.submit "Zapisz klientkę", :class => [:btn, "btn-primary"] %>
-    <%= link_to "Anuluj", search_client_path, :class => [:btn] %></div>
+    <%= f.submit (t "client.submit"), :class => [:btn, "btn-primary"] %>
+    <%= link_to (t "cancel"), search_client_path, :class => [:btn] %></div>
 <% end %>
 
 <script>

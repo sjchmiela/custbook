@@ -1,10 +1,10 @@
-<div class="page-header"><h1>Lista klientek</h1></div>
+<div class="page-header"><h1><%= t "client.list" %></h1></div>
 <div class="row">
 <div class="span5">
 <%= client_create_button %>
 </div>
 <div class="span4 pull-right">
-<input type="text" class="filter" name="livefilter" placeholder="Szukaj" />
+<input type="text" class="filter" name="livefilter" placeholder="<%= t "search" %>" />
 </div>
 </div>
 <br />
@@ -18,16 +18,16 @@ $(function() {
 <thead>
   <tr>
     <th class="header headerSortDown">#</th>
-    <th class="green">Nazwisko</th>
-    <th class="blue">Imię</th>
-    <th class="red">Tel. kom.</th>
-    <th class="orange">Email</th>
-    <th class="header">Akcje</th>
+    <th class="green"><%= t "client.surname" %></th>
+    <th class="blue"><%= t "client.name" %></th>
+    <th class="red"><%= t "client.cell" %></th>
+    <th class="orange"><%= t "client.email" %></th>
+    <th class="header"><%= t "actions" %></th>
   </tr>
 </thead>
 <tbody>
-<% if @clients.any? %>
-<% @clients.each do |client| %>
+<% if clients.any? %>
+<% clients.each do |client| %>
   <tr>
     <td><%= client.id %></td>
     <td><%= client.surname %></td>
@@ -40,7 +40,7 @@ $(function() {
   </tr>
 <% end %>
 <% else %>
-<tr><td colspan="6">Brak obiektów do wyświetlenia.</td></tr>
+<tr><td colspan="6"><%= t "no_objects_to_display" %></td></tr>
 <% end %>
 </tbody>
 </table>

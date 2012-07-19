@@ -40,3 +40,6 @@ gem 'jquery-rails'
 
 # Twitter Bootstrap stylesheets and javascripts
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
+# Decent exposure
+gem 'decent_exposure'
