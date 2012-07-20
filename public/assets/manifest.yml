@@ -1,5 +1,14 @@
 ---
-rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
+apple-touch-icon-114x114.png: apple-touch-icon-114x114-b051cf54d019d73296215b0486384bec.png
+apple-touch-icon-144x144.png: apple-touch-icon-144x144-bf1c2c597f445cadac1e51c4223fbc31.png
+apple-touch-icon-57x57.png: apple-touch-icon-57x57-a097fe1ec6795cf4cdaf36fb83a42868.png
+apple-touch-icon-72x72.png: apple-touch-icon-72x72-28f1cd118f55fd39e7ee4a41c1ceb127.png
+apple-touch-startup-image-1496x2048.png: apple-touch-startup-image-1496x2048-b33562c0de1faf7e40c40e21aba4e56a.png
+apple-touch-startup-image-1536x2008.png: apple-touch-startup-image-1536x2008-319643040109d50a2555c84e4cac7e8c.png
+apple-touch-startup-image-320x460.png: apple-touch-startup-image-320x460-f374d54ddd8b4f874bb07f0c5183a158.png
+apple-touch-startup-image-640x920.png: apple-touch-startup-image-640x920-867f2ffbb7cd45c215d4eacc66862148.png
+apple-touch-startup-image-748x1024.png: apple-touch-startup-image-748x1024-2e8922dd7fddf441294736e3a106c2aa.png
+apple-touch-startup-image-768x1004.png: apple-touch-startup-image-768x1004-e723811390e98a9edfd1ebeaa21fafd0.png
 application.js: application-5583e316d702efdf07e3e741c6c787a5.js
 application.css: application-35ead43dfb5fcdf3636d54785873c227.css
 fontawesome-webfont.eot: fontawesome-webfont-7cf1b0de49e2f8672c9ad6d9e382115f.eot
