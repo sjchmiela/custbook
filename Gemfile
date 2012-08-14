@@ -43,3 +43,6 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 
 # Decent exposure
 gem 'decent_exposure'
+
+# Bullet
+gem 'bullet', group: :development
